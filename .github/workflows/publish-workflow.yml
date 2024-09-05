@@ -13,12 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
-        with:
-          name: ${{inputs.artifact}}
-          path: ./
       - uses: actions/setup-node@v4
         with:
+          node-version: 16
           registry-url: https://registry.npmjs.org/
+      - run: npm i --legacy-peer-deps
+
       - name: Publish Npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.HKYHY_PACKAGE_PUBLISH}}
