@@ -6,7 +6,6 @@ on:
         type: string
 jobs:
   publish-npm:
-    runs-on: ubuntu-latest
     uses: hkyhy/actions/.github/workflows/publish-npm-workflow.yml@master
     secrets: inherit
     with:
