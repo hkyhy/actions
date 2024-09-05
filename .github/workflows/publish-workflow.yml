@@ -5,23 +5,8 @@ on:
         required: true
         type: string
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          registry-url: https://registry.npmjs.org/
-      - run: npm i --legacy-peer-deps
-      - run: npm run build
-      - uses: actions/upload-artifact@v4
-        with:
-          name: build-dist
-          path: |
-            ./build
-            ./package.json
   publish-npm:
-    needs: build
+    runs-on: ubuntu-latest
     uses: hkyhy/actions/.github/workflows/publish-npm-workflow.yml@master
     secrets: inherit
     with:
